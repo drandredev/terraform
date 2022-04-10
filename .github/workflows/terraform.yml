@@ -1,6 +1,7 @@
 name: "Terraform"
 
 on:
+  # Uncomment to enable staging deploy from main
   push:
     branches:
       - main
@@ -17,7 +18,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     defaults:
       run:
-        working-directory: 07-managing-multiple-environments (DEV, QA, PROD)/file-structure/staging
+        working-directory: 07-managing-multiple-environments/file-structure/staging
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -94,7 +95,7 @@ jobs:
 
       - name: Terraform Apply Global
         if: github.event_name == 'push' || github.event_name == 'release'
-        working-directory: 07-managing-multiple-environments (DEV, QA, PROD)/file-structure/global
+        working-directory: 07-managing-multiple-environments/file-structure/global
         run: |
           terraform init
           terraform apply -auto-approve
@@ -105,7 +106,7 @@ jobs:
 
       - name: Terraform Apply Production
         if: steps.check-tag.outputs.environment == 'production' && github.event_name == 'release'
-        working-directory: 07-managing-multiple-environments (DEV, QA, PROD)/file-structure/production
+        working-directory: 07-managing-multiple-environments/file-structure/production
         run: |
           terraform init
           terraform apply -var db_pass=${{secrets.DB_PASS }} -auto-approve
