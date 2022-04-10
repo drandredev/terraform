@@ -38,7 +38,7 @@ module "web_app_1" {
 
   # Input Variables
   bucket_name      = "web-app-1-devops-directive-web-app-data-drandredev"
-  domain           = "innars.com"
+  domain           = "innarstest1.com"
   app_name         = "web-app-1"
   environment_name = "production"
   instance_type    = "t2.micro"
@@ -53,7 +53,7 @@ module "web_app_2" {
 
   # Input Variables
   bucket_name      = "web-app-2-devops-directive-web-app-data-drandredev"
-  domain           = "innarstest.com"
+  domain           = "innarstest2.com"
   app_name         = "web-app-2"
   environment_name = "production"
   instance_type    = "t2.micro"

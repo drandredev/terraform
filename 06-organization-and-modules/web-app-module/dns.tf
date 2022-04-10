@@ -9,7 +9,7 @@ data "aws_route53_zone" "primary" {
 }
 
 locals {
-  dns_zone_id = var.create_dns_zone ? aws_route53_zone.primary[0].zone_id : data.aws_route53_zone.primary[1].zone_id
+  dns_zone_id = var.create_dns_zone ? aws_route53_zone.primary[0].zone_id : data.aws_route53_zone.primary[].zone_id
   subdomain   = var.environment_name == "production" ? "" : "${var.environment_name}."
 }
 

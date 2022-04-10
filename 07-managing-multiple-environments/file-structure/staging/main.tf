@@ -36,7 +36,7 @@ module "web_app" {
 
   # Input Variables
   bucket_name      = "devops-directive-web-app-data-drandredev-${local.environment_name}"
-  domain           = "innars.com"
+  domain           = "innarstest.com"
   environment_name = local.environment_name
   instance_type    = "t2.micro"
   create_dns_zone  = false
